@@ -1,24 +1,15 @@
-const readline = require("readline");
+// Entrada dos dados
+let saldoTotal = parseInt(gets());
+let valorSaque = parseInt(gets());
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+// Cálculo para o saldo disponível
+let saldoDisponível = saldoTotal - valorSaque;
 
-function realizarSaque(saldoTotal, valorSaque) {
-  if (saldoTotal >= valorSaque) {
-    saldoTotal -= valorSaque;
-    console.log(`Saque realizado com sucesso! Novo saldo: ${saldoTotal}`);
-  } else {
-    console.log("Saldo insuficiente. Saque não realizado!");
-  }
+// Aqui nós verificamos a condição para o saque
+if (saldoDisponível >= 0) {
+  // Exibo aqui uma mensagem de sucesso para o cliente
+  print("Saque realizado com sucesso. Novo saldo: " + saldoDisponível);
+} else {
+  // E aqui a ocasião de saldo insuficiente em conta, também exibido ao usuário
+  print("Saldo insuficiente. Saque nao realizado!");
 }
-
-rl.question("Informe o saldo total da conta: ", (saldoTotal) => {
-  rl.question("Informe o valor do saque: ", (valorSaque) => {
-    saldoTotal = parseInt(saldoTotal);
-    valorSaque = parseInt(valorSaque);
-    realizarSaque(saldoTotal, valorSaque);
-    rl.close();
-  });
-});
